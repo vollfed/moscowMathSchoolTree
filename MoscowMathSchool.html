@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width">
+    <title> Evolution tree example </title>
+    <link rel="stylesheet" href="Treant.css">
+    <link rel="stylesheet" href="style.css">
+    
+    <link rel="stylesheet" href="vendor/perfect-scrollbar/perfect-scrollbar.css">
+
+</head>
+<body>
+    <div class="chart" id="OrganiseChart6"></div>
+    <script src="vendor/raphael.js"></script>
+    <script src="Treant.js"></script>
+    
+    <script src="vendor/jquery.min.js"></script>
+    <script src="vendor/perfect-scrollbar/jquery.mousewheel.js"></script>
+    <script src="vendor/perfect-scrollbar/perfect-scrollbar.js"></script>
+    
+    <script src="data.js"></script>
+
+    <script>
+    	//Data from https://math.ru/history/tree/
+    	var TREE_NODES = [
+
+[ {id:115}, "Лузин Н.Н.", "/history/tree/Luzin", ""
+,
+	[ {id:14}, "Александров П.С.", "/history/tree/Aleksandrov_PS", ""
+,
+		[ {id:170}, "Архангельский Н.А.", "/history/tree/arhangelsky_na", ""
+],
+		[ {id:292}, "Веденисов Н.Б.", "/history/tree/Vedenisov_NB", ""
+],
+		[ {id:28}, "Ефремович В.А.", "/history/tree/Efremovich", ""
+],
+		[ {id:134}, "Курош А.Г.", "/history/tree/Kurosh", ""
+],
+		[ {id:272}, "Локуциевский О.В.", "/history/tree/Lokucievskii", ""
+],
+		[ {id:270}, "Мальцев А.А.", "/history/tree/Malcev_AA", ""
+],
+		[ {id:271}, "Мищенко Е.Ф.", "/history/tree/Mischenko", ""
+],
+		[ {id:267}, "Пасынков Б.А.", "/history/tree/Pasynkov", ""
+],
+		[ {id:268}, "Пономарев ", "/history/tree/Ponomarev", ""
+],
+		[ {id:133}, "Понтрягин Л.С.", "/history/tree/Pontryagin", ""
+],
+		[ {id:273}, "Ситников К.А.", "/history/tree/Sitnikov", ""
+],
+		[ {id:274}, "Смирнов Ю.М.", "/history/tree/Smirnov_um", ""
+],
+		[ {id:269}, "Тихонов А.Н.", "/history/tree/Tihonov", ""
+],
+		[ {id:266}, "Тумаркин ", "/history/tree/Tumarkin", ""
+],
+		[ {id:262}, "Федорчук В.В.", "/history/tree/Fedorchuk", ""
+],
+		[ {id:263}, "Франкль ", "/history/tree/Frankl", ""
+],
+		[ {id:264}, "Чогошвили Г.С.", "/history/tree/Chogoshvili", ""
+],
+		[ {id:265}, "Щепин Е.В.", "/history/tree/Schepin", ""
+]
+]
+,
+	[ {id:121}, "Бари Н.К.", "/history/tree/Bari", ""
+],
+	[ {id:150}, "Вельяминов ", "/history/tree/veliaminov", ""
+],
+	[ {id:151}, "Гливенко В.И.", "/history/tree/Glivenko", ""
+],
+	[ {id:122}, "Келдыш Л.В.", "/history/tree/Keldysh_LV", ""
+],
+	[ {id:68}, "Колмогоров А.Н.", "/history/tree/Kolmogorov", ""
+,
+		[ {id:128}, "Алексеев В.М.", "/history/tree/alekseev", ""
+],
+		[ {id:98}, "Арнольд В.И.", "/history/tree/arnold_vi", ""
+],
+		[ {id:208}, "Бавли Г.М.", "/history/tree/bavli", ""
+],
+		[ {id:209}, "Баренблатт Г.И.", "/history/tree/barenblatt", ""
+],
+		[ {id:210}, "Беляев Ю.К.", "/history/tree/belyaev", ""
+],
+		[ {id:198}, "Большев Л.Н.", "/history/tree/Bolshev", ""
+],
+		[ {id:256}, "Боровков А.А.", "/history/tree/borovkov", ""
+],
+		[ {id:211}, "Булинский А.В.", "/history/tree/bulinski", ""
+],
+		[ {id:174}, "Вентцель Е.С.", "/history/tree/ventcel_es", ""
+],
+		[ {id:212}, "Верченко И.Я.", "/history/tree/verchenko", ""
+],
+		[ {id:199}, "Витушкин А.Г.", "/history/tree/Vitushkin", ""
+],
+		[ {id:138}, "Гельфанд И.М.", "/history/tree/Gelfand", ""
+,
+			[ {id:103}, "Кириллов А.А.", "/history/tree/kirillov", ""
+,
+				[ {id:141}, "Агранович И.М.", "/history/tree/agranovich_i", ""
+],
+				[ {id:985}, "Окуньков А.Ю.", "/history/tree/okounkov", ""
+]
+]
+,
+			[ {id:289}, "Костюченко А.Г.", "/history/tree/Kostuchenko", ""
+],
+			[ {id:290}, "Садовничий В.А.", "/history/tree/Sadovnichii", ""
+],
+			[ {id:139}, "Шилов Г.Е.", "/history/tree/shilov", ""
+,
+				[ {id:140}, "Хелемский А.Я.", "/history/tree/Helemskii", ""
+]
+]
+]
+,
+		[ {id:102}, "Гнеденко Б.В.", "/history/tree/Gnedenko", ""
+],
+		[ {id:200}, "Гончар А.А.", "/history/tree/Gonchar", ""
+],
+		[ {id:213}, "Добрушин Р.Л.", "/history/tree/dobrushin", ""
+],
+		[ {id:53}, "Дынкин Е.Б.", "/history/tree/dinkin", ""
+,
+			[ {id:144}, "Винберг Э.Б.", "/history/tree/vinberg", ""
+],
+			[ {id:143}, "Скороход А.В.", "/history/tree/skorohod", ""
+]
+]
+,
+		[ {id:69}, "Журбенко И.Г.", "/history/tree/zhurbenko", ""
+],
+		[ {id:214}, "Золотарев В.М.", "/history/tree/zolotarev", ""
+],
+		[ {id:215}, "Кучеренко ", "/history/tree/kucherenko", ""
+],
+		[ {id:216}, "Ломов ", "/history/tree/lomov", ""
+],
+		[ {id:201}, "Мальцев А.И.", "/history/tree/Malcev", ""
+,
+			[ {id:1006}, "Ершов Ю.Л.", "/history/tree/ershov-Yu", ""
+]
+]
+,
+		[ {id:255}, "Мартин-Леф П.", "/history/tree/Martin_Lef", ""
+],
+		[ {id:260}, "Мешалкин Л.Д.", "/history/tree/meshalkin", ""
+],
+		[ {id:203}, "Миллионщиков М.Д.", "/history/tree/million_ov", ""
+],
+		[ {id:202}, "Михалевич В.С.", "/history/tree/Michalevich", ""
+],
+		[ {id:217}, "Молчанов С.К.", "/history/tree/molchanov", ""
+],
+		[ {id:204}, "Монин А.С.", "/history/tree/Monin", ""
+],
+		[ {id:205}, "Никольский С.М.", "/history/tree/Nikolskii", ""
+],
+		[ {id:206}, "Обухов А.М.", "/history/tree/Obuhov", ""
+],
+		[ {id:219}, "Пинскер М.С.", "/history/tree/pinsker", ""
+],
+		[ {id:129}, "Прохоров Ю.В.", "/history/tree/Prohorov_UV", ""
+],
+		[ {id:130}, "Розанов Ю.А.", "/history/tree/rozanov", ""
+],
+		[ {id:131}, "Севастьянов Б.А.", "/history/tree/sevastyanov", ""
+],
+		[ {id:135}, "Синай Я.Г.", "/history/tree/sinay", ""
+,
+			[ {id:137}, "Бунимович Л.А.", "/history/tree/bunimovich", ""
+],
+			[ {id:136}, "Каток А.Б.", "/history/tree/katok", ""
+]
+]
+,
+		[ {id:207}, "Сираждинов С.Х.", "/history/tree/Sirazhdinov", ""
+],
+		[ {id:261}, "Смирнов ", "/history/tree/smirnov", ""
+],
+		[ {id:223}, "Тихомиров В.М.", "/history/tree/Tichomirov", ""
+],
+		[ {id:259}, "Тутубалин В.Н.", "/history/tree/tutubalin", ""
+],
+		[ {id:54}, "Успенский В.А.", "/history/tree/uspenskiy_va", ""
+],
+		[ {id:179}, "Фомин С.В.", "/history/tree/fomin_sv", ""
+],
+		[ {id:132}, "Ширяев А.Н.", "/history/tree/shiryaev", ""
+],
+		[ {id:226}, "Шур ", "/history/tree/shur", ""
+],
+		[ {id:52}, "Яглом А.М.", "/history/tree/Yaglom_AM", ""
+]
+]
+,
+	[ {id:127}, "Кронрод А.С.", "/history/tree/Kronrod", ""
+],
+	[ {id:120}, "Лаврентьев М.А.", "/history/tree/Lavrentyev", ""
+,
+		[ {id:231}, "Базилевич ", "/history/tree/bazilevich", ""
+],
+		[ {id:229}, "Бицадзе А.В.", "/history/tree/Bicadze", ""
+],
+		[ {id:251}, "Волковысский Л.И.", "/history/tree/volkovysskii", ""
+],
+		[ {id:288}, "Келдыш М.В.", "/history/tree/Keldush_MV", ""
+],
+		[ {id:250}, "Кудрявцев Л.Д.", "/history/tree/Kudryavtsev_LD", ""
+],
+		[ {id:15}, "Маркушевич А.И.", "/history/tree/markushevich", ""
+],
+		[ {id:258}, "Суворов ", "/history/tree/suvorov", ""
+],
+		[ {id:227}, "Шабат Б.В.", "/history/tree/Shabat", ""
+]
+]
+,
+	[ {id:123}, "Люстерник Л.А.", "/history/tree/Lyusternik", ""
+],
+	[ {id:116}, "Ляпунов А.А.", "/history/tree/Lyapunov_AA", ""
+,
+		[ {id:233}, "Бусленко Н.П.", "/history/tree/Buslenko", ""
+],
+		[ {id:252}, "Ершов А.П.", "/history/tree/Ershov_AP", ""
+],
+		[ {id:253}, "Журавлев ", "/history/tree/zhuravlev", ""
+],
+		[ {id:248}, "Критицкий ", "/history/tree/Krititskii", ""
+],
+		[ {id:249}, "Кулагина ", "/history/tree/Kulagina", ""
+],
+		[ {id:117}, "Лупанов О.Б.", "/history/tree/Lupanov", ""
+],
+		[ {id:254}, "Мещеряков ", "/history/tree/mescheryakov", ""
+],
+		[ {id:218}, "Миронов ", "/history/tree/mironov", ""
+],
+		[ {id:225}, "Фролов ", "/history/tree/frolov", ""
+],
+		[ {id:237}, "Янов ", "/history/tree/Yanov", ""
+]
+]
+,
+	[ {id:148}, "Меньшов Д.Е.", "/history/tree/menshov", ""
+,
+		[ {id:236}, "Брудно А.Л.", "/history/tree/Brudno", ""
+],
+		[ {id:243}, "Волков ", "/history/tree/volkov", ""
+],
+		[ {id:244}, "Гермейер Ю.Б.", "/history/tree/Germeier", ""
+],
+		[ {id:245}, "Даревский ", "/history/tree/darevskii", ""
+],
+		[ {id:247}, "Долженко Е.П.", "/history/tree/Dolzhenko", ""
+],
+		[ {id:246}, "Кангро ", "/history/tree/Kangro", ""
+],
+		[ {id:242}, "Купцов Н.П.", "/history/tree/Kuptsov", ""
+],
+		[ {id:82}, "Скворцов В.А.", "/history/tree/Skvortsov_VA", ""
+],
+		[ {id:220}, "Стечкин С.Б.", "/history/tree/Stechkin", ""
+,
+			[ {id:435}, "Сун Ю.", "/history/tree/youngsheng", ""
+],
+			[ {id:277}, "Арестов В.В.", "/history/tree/Arestov", ""
+,
+				[ {id:299}, "Бабенко А.Г.", "/history/tree/Babenko_AG", ""
+]
+]
+,
+			[ {id:287}, "Бабаев М.И.", "/history/tree/Babaev", ""
+],
+			[ {id:278}, "Бердышев В.И.", "/history/tree/Berdyshev", ""
+],
+			[ {id:293}, "Гаркави А.Л.", "/history/tree/Garkavi", ""
+],
+			[ {id:294}, "Ефимов А.В.", "/history/tree/Efimov_AV", ""
+],
+			[ {id:434}, "Иванов В.И.", "/history/tree/Ivanov_VI", ""
+,
+				[ {id:1010}, "Горбачев Д.В.", "/history/tree/Gorbachev_DV", ""
+]
+]
+,
+			[ {id:280}, "Конягин С.В.", "/history/tree/Konyagin", ""
+],
+			[ {id:279}, "Субботин Ю.Н.", "/history/tree/Subbotin", ""
+],
+			[ {id:436}, "Тайков Л.В.", "/history/tree/Taikov_LV", ""
+],
+			[ {id:276}, "Теляковский С.А.", "/history/tree/Telyakovskii", ""
+,
+				[ {id:452}, "Осколков К.И.", "/history/tree/Oskolkov", ""
+],
+				[ {id:453}, "Темляков В.Н.", "/history/tree/Temlyakov", ""
+]
+]
+,
+			[ {id:281}, "Царьков И.Г.", "/history/tree/Tsarkov", ""
+],
+			[ {id:296}, "Черных Н.И.", "/history/tree/Chernuh", ""
+],
+			[ {id:295}, "Шведов А.С.", "/history/tree/Shvedov", ""
+],
+			[ {id:285}, "Юдин В.А.", "/history/tree/Udin", ""
+]
+]
+,
+		[ {id:222}, "Талалян ", "/history/tree/talalyan", ""
+],
+		[ {id:257}, "Толстов Г.П.", "/history/tree/tolstov", ""
+],
+		[ {id:238}, "Холщевникова Н.Н.", "/history/tree/Holshevnikova", ""
+],
+		[ {id:240}, "Хуанг Туй ", "/history/tree/Huang_Tui", ""
+],
+		[ {id:234}, "Челидзе В.Г.", "/history/tree/Chelidze", ""
+]
+]
+,
+	[ {id:152}, "Немыцкий В.В.", "/history/tree/Nemuckii", ""
+],
+	[ {id:118}, "Новиков П.С.", "/history/tree/novikov_ps", ""
+,
+		[ {id:230}, "Адян С.И.", "/history/tree/Adyan", ""
+],
+		[ {id:232}, "Арсенин В.Я.", "/history/tree/Arsenin", ""
+],
+		[ {id:235}, "Бардзинь Я.М.", "/history/tree/Bardzin", ""
+],
+		[ {id:239}, "Гладкий ", "/history/tree/gladkii", ""
+],
+		[ {id:241}, "Козлова Е.Г.", "/history/tree/kozlova", ""
+],
+		[ {id:221}, "Тайманов А.Д.", "/history/tree/taimanov", ""
+],
+		[ {id:228}, "Щегольков ", "/history/tree/zhegolkov", ""
+],
+		[ {id:224}, "Яблонский С.В.", "/history/tree/Yablonski", ""
+]
+]
+,
+	[ {id:124}, "Суслин М.Я.", "/history/tree/Suslin", ""
+],
+	[ {id:125}, "Урысон П.С.", "/history/tree/uryson", ""
+],
+	[ {id:149}, "Фёдоров В.С.", "/history/tree/fedorov", ""
+],
+	[ {id:16}, "Хинчин А.Я.", "/history/tree/Hinchin", ""
+],
+	[ {id:126}, "Шнирельман Л.Г.", "/history/tree/Shnirelman", ""
+]
+]
+,
+];
+	
+	//convertor, use like convertToJson(TREE_NODES[0])
+	var convertToJson = function(leftoverArray){
+		var i = 0;
+		var currentJson = {};
+			info = {};
+			currentJson.children = [];
+		var name, link;
+
+		leftoverArray.forEach(t => {
+			i++;
+
+			if(t.id)
+				return;
+
+			if(i==2){
+				info.name = t;
+				return;
+			}
+
+			if(i==3){
+				info.link = t;
+				return;
+			}
+
+			if(i==4){
+				currentJson.text = info;
+				return;
+			}
+
+			if(Array.isArray(t)){	
+				if(t.length > 4)
+				{ currentJson.children.push(convertToJson(t));
+				} else {
+					currentJson.children.push({"text":{"name":t[1],"link":t[2]}});
+				}
+			} 
+
+		});
+		
+		return currentJson;
+	};
+
+    new Treant( tree_structure );
+    </script>
+</body>
+</html>
