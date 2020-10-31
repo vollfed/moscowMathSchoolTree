@@ -278,26 +278,31 @@ var tree_structure = {
                             link: "/history/tree/zhurbenko"
                         }
                     }, {
+						HTMLclass: "kossova",
                         text: {
                             name: "Золотарев В.М.",
                             link: "/history/tree/zolotarev"
                         },
                         children: [{
+								HTMLclass: "kossova",
                                 text: {
                                     name: "Круглов В.М.",
                                     link: ""
                                 },
                                 children: [{
+										HTMLclass: "kossova",
                                         text: {
                                             name: "Королев В.Ю.",
                                             link: ""
                                         },
                                         children: [{
+												HTMLclass: "kossova",
                                                 text: {
                                                     name: "Коссова Е.В.",
                                                     link: ""
                                                 },
                                                 children: [{
+														HTMLclass: "kossova",
                                                         text: {
                                                             name: "Потанин Б.С.",
                                                             link: ""
