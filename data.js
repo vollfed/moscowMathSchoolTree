@@ -327,6 +327,38 @@ var tree_structure = {
           }
         },
         {
+          children: [
+            { 
+              children: [
+                { 
+                  children: [
+                    { 
+                      children: [
+                        {
+                          text: {
+                            name: "Потанин, Б.С.",
+                            link: "/history/tree/"
+                          }
+                        },
+                      ],
+                      text: {
+                        name: "Коссова, Е.В.",
+                        link: "/history/tree/"
+                      }
+                    },
+                  ],
+                  text: {
+                    name: "Королев, В.Ю.",
+                    link: "/history/tree/"
+                  }
+                },
+              ],
+              text: {
+                name: "Круглов, В.М.",
+                link: "/history/tree/"
+              }
+            },
+          ],
           text: {
             name: "Золотарев В.М.",
             link: "/history/tree/zolotarev"
