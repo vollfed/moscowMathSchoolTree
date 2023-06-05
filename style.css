@@ -28,6 +28,18 @@ body { background: #fff;  font-family: "Helvetica Neue",Helvetica,Arial,sans-ser
 	border-radius: 20px;
 	background-color: #CCC;
 }
+
+.evolution-tree.kossova .node-name {
+	border: 1px solid black; 
+	text-align: center;
+	width: 180px; 
+	height: 25px; 
+	line-height: 25px;
+	margin-top: 7px;
+	border-radius: 20px;
+	background-color: #FFC0CB;
+}
+
 .evolution-tree img {  margin-right:  10px; float: none !important; }
 .evolution-tree .node-link {  visibility: hidden; }
 
